@@ -1,0 +1,46 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+
+# Backend
+backend/dist/
+backend/node_modules/
+
+# Miniapp
+miniapp/node_modules/
+miniapp/miniprogram_npm/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Prisma
+backend/prisma/*.db
+
+# Temporary files
+*.log
+backend/fix-users.js
+backend/import-data.js
+
+# WeChat DevTools
+miniapp/project.private.config.json
+
+# Claude
+.claude/
