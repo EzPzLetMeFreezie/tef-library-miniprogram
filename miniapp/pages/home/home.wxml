@@ -1,0 +1,63 @@
+<view class="home-container">
+  <!-- Search Bar -->
+  <view class="search-bar" bindtap="goSearch">
+    <text class="search-icon">🔍</text>
+    <text class="search-placeholder">搜索书名、作者...</text>
+  </view>
+
+  <!-- Banner -->
+  <view class="banner">
+    <image class="banner-logo" src="/images/icon.jpg" mode="aspectFill"></image>
+    <view class="banner-content">
+      <text class="banner-title">TEF Library</text>
+      <text class="banner-desc">Thanksgiving English Fellowship</text>
+    </view>
+  </view>
+
+  <!-- Admin Entry -->
+  <view class="admin-entry card" wx:if="{{isAdmin}}" bindtap="goAdmin">
+    <text class="admin-icon">⚙️</text>
+    <text class="admin-text">进入管理后台</text>
+    <text class="admin-arrow">›</text>
+  </view>
+
+  <!-- Hot Books -->
+  <view class="section" wx:if="{{hotBooks.length > 0}}">
+    <section-header title="🔥 热门图书" bindtap="goBooks"></section-header>
+    <scroll-view scroll-x class="book-scroll">
+      <view class="book-scroll-item" wx:for="{{hotBooks}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+        <image class="book-cover-small" src="{{item.coverUrl || '/images/default-cover.png'}}" mode="aspectFill"></image>
+        <text class="book-title-small">{{item.title}}</text>
+        <text class="book-author-small">{{item.author}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- New Arrivals -->
+  <view class="section" wx:if="{{newArrivals.length > 0}}">
+    <section-header title="📖 新书上架" bindtap="goBooks"></section-header>
+    <scroll-view scroll-x class="book-scroll">
+      <view class="book-scroll-item" wx:for="{{newArrivals}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
+        <image class="book-cover-small" src="{{item.coverUrl || '/images/default-cover.png'}}" mode="aspectFill"></image>
+        <text class="book-title-small">{{item.title}}</text>
+        <text class="book-author-small">{{item.author}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- Category Shelves -->
+  <view class="section" wx:for="{{categoryShelves}}" wx:key="category.id">
+    <section-header title="{{item.category.name}}"></section-header>
+    <view class="book-grid">
+      <view class="book-grid-item" wx:for="{{item.books}}" wx:for-item="book" wx:key="id" bindtap="goDetail" data-id="{{book.id}}">
+        <image class="book-cover-grid" src="{{book.coverUrl || '/images/default-cover.png'}}" mode="aspectFill"></image>
+        <text class="book-title-grid">{{book.title}}</text>
+        <text class="book-author-grid">{{book.author}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-text" wx:if="{{!loading && hotBooks.length === 0 && newArrivals.length === 0}}">
+    暂无图书数据
+  </view>
+</view>

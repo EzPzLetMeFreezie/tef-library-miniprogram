@@ -1,0 +1,47 @@
+.form-container {
+  padding: 24rpx;
+  padding-bottom: 40rpx;
+}
+
+.form-group {
+  padding: 8rpx 24rpx;
+}
+
+.form-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.form-label {
+  display: block;
+  font-size: 26rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.form-input {
+  font-size: 30rpx;
+  color: #333;
+  width: 100%;
+}
+
+.form-textarea {
+  font-size: 30rpx;
+  color: #333;
+  width: 100%;
+  min-height: 120rpx;
+}
+
+.form-picker {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.save-btn {
+  margin-top: 32rpx;
+  width: 100%;
+}

@@ -1,0 +1,150 @@
+.admin-users-container {
+  padding: 24rpx;
+}
+
+.toolbar {
+  position: relative;
+  margin-bottom: 16rpx;
+}
+
+.toolbar .search-input {
+  height: 72rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.search-clear {
+  position: absolute;
+  right: 16rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+  background: #f0f0f0;
+  border-radius: 50%;
+}
+
+.result-bar {
+  margin-bottom: 16rpx;
+}
+
+.result-count {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* User card */
+.user-card {
+  padding: 24rpx;
+  margin-bottom: 16rpx;
+}
+
+.user-main {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #f0f0f0;
+}
+
+.user-info {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.user-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.user-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.role-badge {
+  font-size: 20rpx;
+  padding: 2rpx 12rpx;
+  border-radius: 8rpx;
+  flex-shrink: 0;
+}
+
+.role-admin {
+  background: #fff3e0;
+  color: #f57c00;
+}
+
+.role-user {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.user-detail {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.user-date {
+  font-size: 22rpx;
+  color: #bbb;
+}
+
+/* Actions */
+.user-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16rpx;
+  margin-top: 16rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.action-btn {
+  font-size: 24rpx;
+  padding: 0 20rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  border-radius: 8rpx;
+}
+
+.role-btn {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.delete-btn {
+  background: #fce4ec;
+  color: #e53935;
+}
+
+/* Bottom states */
+.loading-text, .empty-text {
+  text-align: center;
+  color: #999;
+  padding: 40rpx;
+  font-size: 28rpx;
+}
+
+.bottom-tip {
+  text-align: center;
+  color: #ccc;
+  padding: 24rpx;
+  font-size: 24rpx;
+}

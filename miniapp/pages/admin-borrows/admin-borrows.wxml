@@ -1,0 +1,44 @@
+<view class="admin-borrows-container">
+  <view class="toolbar">
+    <input class="search-input" placeholder="搜索书名或用户..." value="{{keyword}}" bindinput="onKeywordInput" bindconfirm="doSearch" />
+    <view class="toolbar-btn" bindtap="goCreateBorrow">+ 新建借阅</view>
+  </view>
+
+  <view class="filter-tabs">
+    <view class="tab-item {{currentStatus === '' ? 'active' : ''}}" bindtap="switchStatus" data-status="">全部({{statusCounts.all}})</view>
+    <view class="tab-item {{currentStatus === 'BORROWED' ? 'active' : ''}}" bindtap="switchStatus" data-status="BORROWED">借阅中({{statusCounts.BORROWED}})</view>
+    <view class="tab-item {{currentStatus === 'OVERDUE' ? 'active' : ''}}" bindtap="switchStatus" data-status="OVERDUE">已逾期({{statusCounts.OVERDUE}})</view>
+    <view class="tab-item {{currentStatus === 'RETURNED' ? 'active' : ''}}" bindtap="switchStatus" data-status="RETURNED">已归还({{statusCounts.RETURNED}})</view>
+  </view>
+
+  <view class="sort-bar">
+    <text class="result-count">共 {{total}} 条</text>
+    <view class="sort-buttons">
+      <text class="sort-btn {{sortBy === 'userName' ? 'active' : ''}}" bindtap="toggleSort" data-field="userName">借阅人{{sortBy === 'userName' ? (sortOrder === 'asc' ? ' ↑' : ' ↓') : ''}}</text>
+      <text class="sort-btn {{sortBy === 'borrowDate' ? 'active' : ''}}" bindtap="toggleSort" data-field="borrowDate">借阅时间{{sortBy === 'borrowDate' ? (sortOrder === 'asc' ? ' ↑' : ' ↓') : ''}}</text>
+      <text class="sort-btn {{sortBy === 'dueDate' ? 'active' : ''}}" bindtap="toggleSort" data-field="dueDate">到期日{{sortBy === 'dueDate' ? (sortOrder === 'asc' ? ' ↑' : ' ↓') : ''}}</text>
+    </view>
+  </view>
+
+  <view class="record-list">
+    <view class="record-card card" wx:for="{{records}}" wx:key="id">
+      <view class="record-header">
+        <text class="record-user">{{item.user.name}}</text>
+        <text class="tag {{item.statusClass}}">{{item.statusText}}</text>
+      </view>
+      <view class="record-body">
+        <text class="record-book-title">《{{item.book.title}}》</text>
+        <text class="record-date">借阅: {{item.borrowDateStr}}</text>
+        <text class="record-date">应还: {{item.dueDateStr}}</text>
+        <text class="record-date" wx:if="{{item.returnDate}}">归还: {{item.returnDateStr}}</text>
+      </view>
+      <view class="record-footer" wx:if="{{item.status !== 'RETURNED'}}">
+        <button class="btn-secondary" size="mini" catchtap="handleReturn" data-id="{{item.id}}" data-title="{{item.book.title}}">确认归还</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading-text" wx:if="{{loading}}">加载中...</view>
+  <view class="empty-text" wx:if="{{!loading && records.length === 0}}">暂无借阅记录</view>
+  <view class="bottom-tip" wx:if="{{!hasMore && records.length > 0 && !loading}}">- 已加载全部 -</view>
+</view>

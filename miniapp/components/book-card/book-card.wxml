@@ -1,0 +1,11 @@
+<view class="book-card">
+  <image class="book-cover" src="{{book.coverUrl || '/images/default-cover.png'}}" mode="aspectFill"></image>
+  <view class="book-info">
+    <text class="book-title">{{book.title}}</text>
+    <text class="book-author">{{book.author}}</text>
+    <view class="book-meta">
+      <text class="book-category" wx:if="{{book.category}}">{{book.category.name}}</text>
+      <text class="book-stock">库存: {{book.availableCount}}/{{book.totalCount}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,46 @@
+<view class="my-borrows-container">
+  <view class="user-header card" wx:if="{{userInfo}}">
+    <image class="user-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}"></image>
+    <view class="user-info">
+      <text class="user-name">{{userInfo.name}}</text>
+      <text class="user-role">{{userInfo.role === 'ADMIN' ? '管理员' : '普通用户'}}</text>
+    </view>
+    <view class="user-actions" wx:if="{{userInfo.role === 'ADMIN'}}">
+      <button class="btn-secondary" size="mini" bindtap="goAdmin">管理后台</button>
+    </view>
+  </view>
+
+  <view class="filter-tabs">
+    <view class="tab-item {{currentTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">全部</view>
+    <view class="tab-item {{currentTab === 'BORROWED' ? 'active' : ''}}" bindtap="switchTab" data-tab="BORROWED">借阅中</view>
+    <view class="tab-item {{currentTab === 'RETURNED' ? 'active' : ''}}" bindtap="switchTab" data-tab="RETURNED">已归还</view>
+    <view class="tab-item {{currentTab === 'OVERDUE' ? 'active' : ''}}" bindtap="switchTab" data-tab="OVERDUE">已逾期</view>
+  </view>
+
+  <view class="record-list">
+    <view class="record-card card" wx:for="{{records}}" wx:key="id">
+      <view class="record-book" bindtap="goDetail" data-id="{{item.book.id}}">
+        <image class="record-cover" src="{{item.book.coverUrl || '/images/default-cover.png'}}" mode="aspectFill"></image>
+        <view class="record-info">
+          <text class="record-title">{{item.book.title}}</text>
+          <text class="record-author">{{item.book.author}}</text>
+          <view class="record-dates">
+            <text class="record-date">借阅: {{item.borrowDateStr}}</text>
+            <text class="record-date">应还: {{item.dueDateStr}}</text>
+            <text class="record-date" wx:if="{{item.returnDate}}">归还: {{item.returnDateStr}}</text>
+          </view>
+        </view>
+        <view class="record-status">
+          <text class="tag {{item.statusClass}}">{{item.statusText}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading-text" wx:if="{{loading}}">加载中...</view>
+  <view class="empty-text" wx:if="{{!loading && records.length === 0}}">暂无借阅记录</view>
+
+  <view class="logout-section">
+    <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+  </view>
+</view>

@@ -1,0 +1,155 @@
+.admin-borrows-container {
+  padding: 24rpx;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.toolbar .search-input {
+  flex: 1;
+  height: 72rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.toolbar-btn {
+  flex-shrink: 0;
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 24rpx;
+  background: #4A90D9;
+  color: #fff;
+  font-size: 26rpx;
+  border-radius: 12rpx;
+  white-space: nowrap;
+}
+
+.toolbar-btn:active {
+  opacity: 0.8;
+}
+
+.loading-text, .empty-text {
+  text-align: center;
+  color: #999;
+  padding: 40rpx;
+  font-size: 28rpx;
+}
+
+.filter-tabs {
+  display: flex;
+  background: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 24rpx;
+  overflow: hidden;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 26rpx;
+  color: #666;
+  position: relative;
+}
+
+.tab-item.active {
+  color: #4A90D9;
+  font-weight: 600;
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48rpx;
+  height: 4rpx;
+  background: #4A90D9;
+  border-radius: 2rpx;
+}
+
+.record-card {
+  padding: 20rpx 24rpx;
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.record-user {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.record-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.record-book-title {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.record-date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.record-footer {
+  margin-top: 16rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sort-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.result-count {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.sort-buttons {
+  display: flex;
+  gap: 16rpx;
+}
+
+.sort-btn {
+  font-size: 24rpx;
+  color: #666;
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+  background: #fff;
+}
+
+.sort-btn.active {
+  color: #4A90D9;
+  font-weight: 600;
+  background: #f0f4ff;
+}
+
+.bottom-tip {
+  text-align: center;
+  color: #ccc;
+  padding: 24rpx;
+  font-size: 24rpx;
+}

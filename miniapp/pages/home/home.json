@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "TEF Library",
+  "usingComponents": {
+    "book-card": "/components/book-card/book-card",
+    "section-header": "/components/section-header/section-header"
+  }
+}

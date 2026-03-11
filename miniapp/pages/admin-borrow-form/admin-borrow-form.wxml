@@ -1,0 +1,65 @@
+<view class="form-container">
+  <!-- User selection -->
+  <view class="form-group card">
+    <view class="section-title">借阅人 *</view>
+    <view class="search-field" wx:if="{{!selectedUser}}">
+      <input class="search-input" placeholder="搜索用户名或手机号..." value="{{userKeyword}}" bindinput="onUserKeywordInput" />
+    </view>
+    <view class="selected-item" wx:if="{{selectedUser}}">
+      <view class="selected-info">
+        <text class="selected-name">{{selectedUser.name}}</text>
+        <text class="selected-detail">ID: {{selectedUser.id}}{{selectedUser.phone ? ' | ' + selectedUser.phone : ''}}</text>
+      </view>
+      <text class="clear-btn" catchtap="clearUser">更换</text>
+    </view>
+    <!-- User search results -->
+    <view class="search-results" wx:if="{{showUserResults}}">
+      <view class="result-item" wx:for="{{userResults}}" wx:key="id" bindtap="selectUser" data-user="{{item}}">
+        <text class="result-name">{{item.name}}</text>
+        <text class="result-detail">{{item.phone || '无手机号'}} | {{item.role}}</text>
+      </view>
+    </view>
+    <view class="no-results" wx:if="{{userKeyword && !showUserResults && !selectedUser && userResults.length === 0}}">
+      <text>未找到匹配的用户</text>
+    </view>
+  </view>
+
+  <!-- Book selection -->
+  <view class="form-group card">
+    <view class="section-title">图书 *</view>
+    <view class="search-field" wx:if="{{!selectedBook}}">
+      <input class="search-input" placeholder="搜索书名、作者或ISBN..." value="{{bookKeyword}}" bindinput="onBookKeywordInput" />
+    </view>
+    <view class="selected-item" wx:if="{{selectedBook}}">
+      <view class="selected-info">
+        <text class="selected-name">《{{selectedBook.title}}》</text>
+        <text class="selected-detail">{{selectedBook.author}} | 可借: {{selectedBook.availableCount}}/{{selectedBook.totalCount}}</text>
+      </view>
+      <text class="clear-btn" catchtap="clearBook">更换</text>
+    </view>
+    <!-- Book search results -->
+    <view class="search-results" wx:if="{{showBookResults}}">
+      <view class="result-item" wx:for="{{bookResults}}" wx:key="id" bindtap="selectBook" data-book="{{item}}">
+        <text class="result-name">《{{item.title}}》</text>
+        <text class="result-detail">{{item.author}} | 可借: {{item.availableCount}}</text>
+      </view>
+    </view>
+    <view class="no-results" wx:if="{{bookKeyword && !showBookResults && !selectedBook && bookResults.length === 0}}">
+      <text>未找到可借图书</text>
+    </view>
+  </view>
+
+  <!-- Due date -->
+  <view class="form-group card">
+    <view class="section-title">应还日期</view>
+    <picker mode="date" value="{{dueDate}}" start="{{minDate}}" bindchange="onDueDateChange">
+      <view class="date-picker">
+        <text class="date-value">{{dueDate}}</text>
+        <text class="date-hint">默认30天后</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- Submit -->
+  <button class="btn-primary submit-btn" bindtap="handleSubmit" loading="{{submitting}}" disabled="{{submitting}}">确认借阅</button>
+</view>

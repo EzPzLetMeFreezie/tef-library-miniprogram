@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/login/login",
+    "pages/books/books",
+    "pages/book-detail/book-detail",
+    "pages/my-borrows/my-borrows",
+    "pages/admin-dashboard/admin-dashboard",
+    "pages/admin-books/admin-books",
+    "pages/admin-book-form/admin-book-form",
+    "pages/admin-borrows/admin-borrows",
+    "pages/admin-borrow-form/admin-borrow-form",
+    "pages/admin-users/admin-users",
+    "pages/admin-categories/admin-categories"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4A90D9",
+    "navigationBarTitleText": "TEF Library",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#4A90D9",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-active.png"
+      },
+      {
+        "pagePath": "pages/books/books",
+        "text": "图书",
+        "iconPath": "images/book.png",
+        "selectedIconPath": "images/book-active.png"
+      },
+      {
+        "pagePath": "pages/my-borrows/my-borrows",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

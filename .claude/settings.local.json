@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:developers.weixin.qq.com)",
+      "Bash(ipconfig)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://172.18.40.160:3000/api/auth/login -X POST -H \"Content-Type: application/json\" -d '{\"\"code\"\":\"\"test123\"\"}')",
+      "Bash(curl -v http://localhost:3000/api/auth/login -X POST -H \"Content-Type: application/json\" -d '{\"\"code\"\":\"\"test123\"\"}')",
+      "Bash(NO_PROXY=*)",
+      "Bash(no_proxy=*)",
+      "Bash(curl -v --noproxy '*' http://localhost:3000/api/auth/login -X POST -H \"Content-Type: application/json\" -d '{\"\"code\"\":\"\"test123\"\"}')",
+      "Bash(ls \"C:\\\\Users\\\\andrewhu\\\\Desktop\\\\Projects\\\\微信小程序/\"*.xlsx)",
+      "Bash(node -e \":*)",
+      "Bash(node import-data.js)",
+      "Bash(curl --noproxy '*' -s \"http://localhost:3000/api/borrow-records/my?page=1&pageSize=20\" -H \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc3MzE5Nzg2NH0.ERUUXzDtJ-r9fdohh4DRphib_AxIJE1bZIorwVwYelM\")",
+      "Bash(npm run:*)",
+      "Bash(curl -s http://172.18.40.160:3000/api/auth/profile)",
+      "Bash(curl -s http://localhost:3000/api/auth/profile)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :3000)",
+      "Bash(findstr LISTENING)",
+      "Bash(tasklist /FI \"PID eq 25836\" /FO TABLE)",
+      "Bash(cmd /c \"tasklist /FI \"\"PID eq 25836\"\"\")",
+      "Bash(curl -v http://127.0.0.1:3000/api/auth/profile)",
+      "Bash(curl --noproxy '*' -s http://127.0.0.1:3000/api/auth/profile)",
+      "Bash(npx prisma:*)",
+      "Bash(node fix-users.js)"
+    ]
+  }
+}

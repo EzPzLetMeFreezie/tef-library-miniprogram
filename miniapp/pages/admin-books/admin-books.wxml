@@ -1,0 +1,51 @@
+<view class="admin-books-container">
+  <view class="toolbar">
+    <view class="search-wrap">
+      <input class="search-input" placeholder="搜索书名/作者/ISBN..." value="{{keyword}}" bindinput="onKeywordInput" bindconfirm="doSearch" />
+      <text class="search-clear" wx:if="{{keyword}}" bindtap="clearSearch">x</text>
+    </view>
+    <button class="btn-primary add-btn" size="mini" bindtap="goAdd">+ 新增</button>
+  </view>
+
+  <view class="status-tabs">
+    <view class="tab-item {{selectedStatus === '' ? 'active' : ''}}" bindtap="selectStatus" data-status="">全部</view>
+    <view class="tab-item {{selectedStatus === 'AVAILABLE' ? 'active' : ''}}" bindtap="selectStatus" data-status="AVAILABLE">可借</view>
+    <view class="tab-item {{selectedStatus === 'DISABLED' ? 'active' : ''}}" bindtap="selectStatus" data-status="DISABLED">已下架</view>
+  </view>
+
+  <scroll-view class="category-scroll" scroll-x wx:if="{{categories.length > 0}}">
+    <view class="category-tags">
+      <view class="category-tag {{selectedCategoryId === '' ? 'active' : ''}}" bindtap="selectCategory" data-id="">全部分类</view>
+      <view class="category-tag {{selectedCategoryId === item.id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="id" bindtap="selectCategory" data-id="{{item.id}}">{{item.name}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="sort-bar">
+    <text class="result-count">共 {{total}} 本</text>
+    <view class="sort-buttons">
+      <text class="sort-btn {{sortBy === 'title' ? 'active' : ''}}" bindtap="toggleSort" data-field="title">书名{{sortBy === 'title' ? (sortOrder === 'asc' ? ' ↑' : ' ↓') : ''}}</text>
+      <text class="sort-btn {{sortBy === 'author' ? 'active' : ''}}" bindtap="toggleSort" data-field="author">作者{{sortBy === 'author' ? (sortOrder === 'asc' ? ' ↑' : ' ↓') : ''}}</text>
+      <text class="sort-btn {{sortBy === 'createdAt' ? 'active' : ''}}" bindtap="toggleSort" data-field="createdAt">时间{{sortBy === 'createdAt' ? (sortOrder === 'asc' ? ' ↑' : ' ↓') : ''}}</text>
+    </view>
+  </view>
+
+  <view class="book-list">
+    <view class="book-item card" wx:for="{{books}}" wx:key="id">
+      <view class="book-row" bindtap="goEdit" data-id="{{item.id}}">
+        <view class="book-main">
+          <text class="book-title">{{item.title}}</text>
+          <text class="book-sub">{{item.author}} · {{item.category ? item.category.name : '未分类'}}</text>
+          <text class="book-stock">库存: {{item.availableCount}}/{{item.totalCount}}</text>
+        </view>
+        <view class="book-actions">
+          <text class="action-edit">编辑</text>
+          <text class="action-delete" catchtap="handleDelete" data-id="{{item.id}}" data-title="{{item.title}}">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading-text" wx:if="{{loading}}">加载中...</view>
+  <view class="empty-text" wx:if="{{!loading && books.length === 0}}">暂无图书</view>
+  <view class="bottom-tip" wx:if="{{!hasMore && books.length > 0 && !loading}}">- 已加载全部 -</view>
+</view>

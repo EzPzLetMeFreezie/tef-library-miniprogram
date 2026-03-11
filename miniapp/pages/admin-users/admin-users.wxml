@@ -1,0 +1,38 @@
+<view class="admin-users-container">
+  <view class="toolbar">
+    <input class="search-input" placeholder="搜索用户名或手机号..." value="{{keyword}}" bindinput="onKeywordInput" bindconfirm="doSearch" />
+    <view class="search-clear" wx:if="{{keyword}}" bindtap="clearSearch">x</view>
+  </view>
+
+  <view class="result-bar">
+    <text class="result-count">共 {{total}} 位用户</text>
+  </view>
+
+  <view class="user-list">
+    <view class="user-card card" wx:for="{{users}}" wx:key="id">
+      <view class="user-main">
+        <image class="user-avatar" src="{{item.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+        <view class="user-info">
+          <view class="user-name-row">
+            <text class="user-name">{{item.name}}</text>
+            <text class="role-badge {{item.role === 'ADMIN' ? 'role-admin' : 'role-user'}}">{{item.roleText}}</text>
+          </view>
+          <text class="user-detail">ID: {{item.id}} | {{item.phone || '无手机号'}}</text>
+          <text class="user-date">注册: {{item.createdDateStr}}</text>
+        </view>
+      </view>
+      <view class="user-actions">
+        <button class="action-btn role-btn" size="mini" catchtap="handleToggleRole" data-id="{{item.id}}" data-name="{{item.name}}" data-role="{{item.role}}">
+          {{item.role === 'ADMIN' ? '设为用户' : '设为管理员'}}
+        </button>
+        <button class="action-btn delete-btn" size="mini" catchtap="handleDelete" data-id="{{item.id}}" data-name="{{item.name}}">
+          删除
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading-text" wx:if="{{loading}}">加载中...</view>
+  <view class="empty-text" wx:if="{{!loading && users.length === 0}}">暂无用户</view>
+  <view class="bottom-tip" wx:if="{{!hasMore && users.length > 0 && !loading}}">- 已加载全部 -</view>
+</view>

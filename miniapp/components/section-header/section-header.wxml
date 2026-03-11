@@ -1,0 +1,4 @@
+<view class="section-header">
+  <text class="section-title">{{title}}</text>
+  <text class="section-more" wx:if="{{showMore}}">查看更多 ›</text>
+</view>

@@ -1,0 +1,60 @@
+.book-card {
+  display: flex;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.book-cover {
+  width: 140rpx;
+  height: 190rpx;
+  border-radius: 10rpx;
+  background: #e8e8e8;
+  flex-shrink: 0;
+}
+
+.book-info {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.book-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.book-author {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+}
+
+.book-meta {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.book-category {
+  font-size: 22rpx;
+  color: #4A90D9;
+  background: #e6f0ff;
+  padding: 4rpx 14rpx;
+  border-radius: 8rpx;
+}
+
+.book-stock {
+  font-size: 22rpx;
+  color: #999;
+}

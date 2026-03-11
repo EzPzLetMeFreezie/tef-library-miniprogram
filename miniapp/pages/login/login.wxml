@@ -1,0 +1,25 @@
+<view class="login-container">
+  <view class="login-header">
+    <image class="logo-img" src="/images/icon.jpg" mode="aspectFill"></image>
+    <text class="app-title">TEF Library</text>
+    <text class="app-subtitle">Thanksgiving English Fellowship</text>
+  </view>
+
+  <view class="login-body">
+    <!-- Avatar chooser -->
+    <view class="profile-section">
+      <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <image class="avatar-preview" src="{{avatarUrl || '/images/default-avatar.png'}}"></image>
+        <text class="avatar-hint">{{avatarUrl ? '点击更换头像' : '点击选择头像'}}</text>
+      </button>
+      <view class="nickname-field">
+        <input type="nickname" class="nickname-input" placeholder="请输入昵称" value="{{nickname}}" bindinput="onNicknameInput" />
+      </view>
+    </view>
+
+    <button class="login-btn" bindtap="handleLogin" loading="{{loading}}">
+      <text>微信登录</text>
+    </button>
+    <text class="login-tip">头像和昵称为选填，可直接登录</text>
+  </view>
+</view>

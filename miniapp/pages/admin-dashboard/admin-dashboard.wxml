@@ -1,0 +1,55 @@
+<view class="admin-container">
+  <view class="dashboard-header">
+    <image class="dashboard-logo" src="/images/icon.jpg" mode="aspectFill"></image>
+    <text class="dashboard-title">TEF Library Admin</text>
+  </view>
+
+  <view class="stats-grid">
+    <view class="stat-card card" bindtap="goTo" data-url="/pages/admin-books/admin-books">
+      <text class="stat-number">{{stats.totalBooks}}</text>
+      <text class="stat-label">总图书数</text>
+    </view>
+    <view class="stat-card card" bindtap="goTo" data-url="/pages/admin-books/admin-books">
+      <text class="stat-number">{{stats.availableBooks}}</text>
+      <text class="stat-label">可借图书</text>
+    </view>
+    <view class="stat-card card" bindtap="goTo" data-url="/pages/admin-borrows/admin-borrows">
+      <text class="stat-number">{{stats.activeBorrows}}</text>
+      <text class="stat-label">当前借出</text>
+    </view>
+    <view class="stat-card card" bindtap="goTo" data-url="/pages/admin-borrows/admin-borrows">
+      <text class="stat-number danger">{{stats.overdueRecords}}</text>
+      <text class="stat-label">逾期记录</text>
+    </view>
+    <view class="stat-card card" bindtap="goTo" data-url="/pages/admin-users/admin-users">
+      <text class="stat-number">{{stats.totalUsers}}</text>
+      <text class="stat-label">注册用户</text>
+    </view>
+  </view>
+
+  <view class="menu-section">
+    <text class="menu-title">管理功能</text>
+    <view class="menu-list">
+      <view class="menu-item card" bindtap="goTo" data-url="/pages/admin-books/admin-books">
+        <text class="menu-icon">📚</text>
+        <text class="menu-text">图书管理</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      <view class="menu-item card" bindtap="goTo" data-url="/pages/admin-borrows/admin-borrows">
+        <text class="menu-icon">📋</text>
+        <text class="menu-text">借阅管理</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      <view class="menu-item card" bindtap="goTo" data-url="/pages/admin-users/admin-users">
+        <text class="menu-icon">👥</text>
+        <text class="menu-text">用户管理</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      <view class="menu-item card" bindtap="goTo" data-url="/pages/admin-categories/admin-categories">
+        <text class="menu-icon">📂</text>
+        <text class="menu-text">分类管理</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+</view>

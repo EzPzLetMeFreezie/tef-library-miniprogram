@@ -1,0 +1,54 @@
+<view class="form-container">
+  <view class="form-group card">
+    <view class="form-item">
+      <text class="form-label">书名 *</text>
+      <input class="form-input" value="{{form.title}}" bindinput="onInput" data-field="title" placeholder="请输入书名" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">作者 *</text>
+      <input class="form-input" value="{{form.author}}" bindinput="onInput" data-field="author" placeholder="请输入作者" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">出版社</text>
+      <input class="form-input" value="{{form.publisher}}" bindinput="onInput" data-field="publisher" placeholder="请输入出版社" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">ISBN</text>
+      <input class="form-input" value="{{form.isbn}}" bindinput="onInput" data-field="isbn" placeholder="请输入ISBN" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">分类</text>
+      <picker mode="selector" range="{{categoryNames}}" value="{{categoryIndex}}" bindchange="onCategoryChange">
+        <text class="form-picker">{{categoryIndex >= 0 ? categoryNames[categoryIndex] : '请选择分类'}}</text>
+      </picker>
+    </view>
+    <view class="form-item">
+      <text class="form-label">简介</text>
+      <textarea class="form-textarea" value="{{form.description}}" bindinput="onInput" data-field="description" placeholder="请输入简介" auto-height />
+    </view>
+    <view class="form-item">
+      <text class="form-label">封面URL</text>
+      <input class="form-input" value="{{form.coverUrl}}" bindinput="onInput" data-field="coverUrl" placeholder="请输入封面图片URL" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">总数量</text>
+      <input class="form-input" type="number" value="{{form.totalCount}}" bindinput="onInput" data-field="totalCount" placeholder="1" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">可借数量</text>
+      <input class="form-input" type="number" value="{{form.availableCount}}" bindinput="onInput" data-field="availableCount" placeholder="1" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">位置</text>
+      <input class="form-input" value="{{form.location}}" bindinput="onInput" data-field="location" placeholder="如 A-01-03" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">状态</text>
+      <picker mode="selector" range="{{statusOptions}}" value="{{statusIndex}}" bindchange="onStatusChange">
+        <text class="form-picker">{{statusOptions[statusIndex]}}</text>
+      </picker>
+    </view>
+  </view>
+
+  <button class="btn-primary save-btn" bindtap="handleSave" loading="{{saving}}">{{isEdit ? '保存修改' : '创建图书'}}</button>
+</view>

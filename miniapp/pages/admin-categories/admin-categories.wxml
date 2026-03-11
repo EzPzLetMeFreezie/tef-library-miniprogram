@@ -1,0 +1,21 @@
+<view class="admin-categories-container">
+  <view class="add-section">
+    <input class="add-input" placeholder="输入新分类名称" value="{{newName}}" bindinput="onNewNameInput" />
+    <button class="btn-primary" size="mini" bindtap="handleAdd">添加</button>
+  </view>
+
+  <view class="category-list">
+    <view class="category-item card" wx:for="{{categories}}" wx:key="id">
+      <view class="category-info">
+        <text class="category-name">{{item.name}}</text>
+        <text class="category-count">{{item._count.books}} 本图书</text>
+      </view>
+      <view class="category-actions">
+        <text class="action-edit" catchtap="handleEdit" data-id="{{item.id}}" data-name="{{item.name}}">编辑</text>
+        <text class="action-delete" catchtap="handleDelete" data-id="{{item.id}}" data-name="{{item.name}}" data-count="{{item._count.books}}">删除</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-text" wx:if="{{categories.length === 0}}">暂无分类</view>
+</view>
