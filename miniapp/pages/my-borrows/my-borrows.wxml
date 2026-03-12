@@ -3,18 +3,18 @@
     <image class="user-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}"></image>
     <view class="user-info">
       <text class="user-name">{{userInfo.name}}</text>
-      <text class="user-role">{{userInfo.role === 'ADMIN' ? '管理员' : '普通用户'}}</text>
+      <text class="user-role">{{userInfo.role === 'ADMIN' ? i18n.admin : i18n.user}}</text>
     </view>
     <view class="user-actions" wx:if="{{userInfo.role === 'ADMIN'}}">
-      <button class="btn-secondary" size="mini" bindtap="goAdmin">管理后台</button>
+      <button class="btn-secondary" size="mini" bindtap="goAdmin">{{i18n.adminPanel}}</button>
     </view>
   </view>
 
   <view class="filter-tabs">
-    <view class="tab-item {{currentTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">全部</view>
-    <view class="tab-item {{currentTab === 'BORROWED' ? 'active' : ''}}" bindtap="switchTab" data-tab="BORROWED">借阅中</view>
-    <view class="tab-item {{currentTab === 'RETURNED' ? 'active' : ''}}" bindtap="switchTab" data-tab="RETURNED">已归还</view>
-    <view class="tab-item {{currentTab === 'OVERDUE' ? 'active' : ''}}" bindtap="switchTab" data-tab="OVERDUE">已逾期</view>
+    <view class="tab-item {{currentTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">{{i18n.all}}</view>
+    <view class="tab-item {{currentTab === 'BORROWED' ? 'active' : ''}}" bindtap="switchTab" data-tab="BORROWED">{{i18n.borrowed}}</view>
+    <view class="tab-item {{currentTab === 'RETURNED' ? 'active' : ''}}" bindtap="switchTab" data-tab="RETURNED">{{i18n.returned}}</view>
+    <view class="tab-item {{currentTab === 'OVERDUE' ? 'active' : ''}}" bindtap="switchTab" data-tab="OVERDUE">{{i18n.overdue}}</view>
   </view>
 
   <view class="record-list">
@@ -25,9 +25,9 @@
           <text class="record-title">{{item.book.title}}</text>
           <text class="record-author">{{item.book.author}}</text>
           <view class="record-dates">
-            <text class="record-date">借阅: {{item.borrowDateStr}}</text>
-            <text class="record-date">应还: {{item.dueDateStr}}</text>
-            <text class="record-date" wx:if="{{item.returnDate}}">归还: {{item.returnDateStr}}</text>
+            <text class="record-date">{{i18n.borrowDate}}{{item.borrowDateStr}}</text>
+            <text class="record-date">{{i18n.dueDate}}{{item.dueDateStr}}</text>
+            <text class="record-date" wx:if="{{item.returnDate}}">{{i18n.returnDate}}{{item.returnDateStr}}</text>
           </view>
         </view>
         <view class="record-status">
@@ -37,10 +37,10 @@
     </view>
   </view>
 
-  <view class="loading-text" wx:if="{{loading}}">加载中...</view>
-  <view class="empty-text" wx:if="{{!loading && records.length === 0}}">暂无借阅记录</view>
+  <view class="loading-text" wx:if="{{loading}}">{{i18n.loading}}</view>
+  <view class="empty-text" wx:if="{{!loading && records.length === 0}}">{{i18n.noRecords}}</view>
 
   <view class="logout-section">
-    <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+    <button class="logout-btn" bindtap="handleLogout">{{i18n.logout}}</button>
   </view>
 </view>

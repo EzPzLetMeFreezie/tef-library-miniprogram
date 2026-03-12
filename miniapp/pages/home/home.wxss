@@ -47,6 +47,23 @@
   gap: 20rpx;
 }
 
+.lang-btn {
+  height: 52rpx;
+  padding: 0 20rpx;
+  background: #1a1a1a;
+  border-radius: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-text {
+  font-size: 22rpx;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+}
+
 .admin-badge {
   width: 60rpx;
   height: 60rpx;

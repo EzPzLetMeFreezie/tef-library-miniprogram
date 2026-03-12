@@ -10,16 +10,19 @@
     <view class="profile-section">
       <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
         <image class="avatar-preview" src="{{avatarUrl || '/images/default-avatar.png'}}"></image>
-        <text class="avatar-hint">{{avatarUrl ? '点击更换头像' : '点击选择头像'}}</text>
+        <text class="avatar-hint">{{avatarUrl ? i18n.avatarChange : i18n.avatarChoose}}</text>
       </button>
       <view class="nickname-field">
-        <input type="nickname" class="nickname-input" placeholder="请输入昵称" value="{{nickname}}" bindinput="onNicknameInput" />
+        <input type="nickname" class="nickname-input" placeholder="{{i18n.nicknamePlaceholder}}" value="{{nickname}}" bindinput="onNicknameInput" />
       </view>
     </view>
 
     <button class="login-btn" bindtap="handleLogin" loading="{{loading}}">
-      <text>微信登录</text>
+      <text>{{i18n.loginBtn}}</text>
     </button>
-    <text class="login-tip">头像和昵称为选填，可直接登录</text>
+    <text class="login-tip">{{i18n.loginTip}}</text>
+    <view class="login-lang-btn" bindtap="toggleLang">
+      <text class="login-lang-text">{{i18n.langSwitch}}</text>
+    </view>
   </view>
 </view>

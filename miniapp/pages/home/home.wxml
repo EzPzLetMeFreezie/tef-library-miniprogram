@@ -1,5 +1,5 @@
 <view class="home-container">
-  <!-- Top Header: Date + Avatar -->
+  <!-- Top Header: Date + Lang + Avatar -->
   <view class="top-header">
     <view class="date-info">
       <text class="date-day">{{dateDay}}</text>
@@ -9,6 +9,9 @@
       </view>
     </view>
     <view class="header-right">
+      <view class="lang-btn" bindtap="toggleLang">
+        <text class="lang-text">{{i18n.langSwitch}}</text>
+      </view>
       <view class="admin-badge" wx:if="{{isAdmin}}" bindtap="goAdmin">
         <text class="admin-badge-icon">⚙</text>
       </view>
@@ -19,8 +22,8 @@
   <!-- New Arrivals Section -->
   <view class="section" wx:if="{{newArrivals.length > 0}}">
     <view class="section-head">
-      <text class="section-title">New arrivals</text>
-      <text class="section-more" bindtap="goBooks">View all ></text>
+      <text class="section-title">{{i18n.newArrivals}}</text>
+      <text class="section-more" bindtap="goBooks">{{i18n.viewAll}}</text>
     </view>
     <scroll-view scroll-x class="book-scroll" enhanced show-scrollbar="{{false}}">
       <view class="book-scroll-item" wx:for="{{newArrivals}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
@@ -34,8 +37,8 @@
   <!-- Hot Books Section -->
   <view class="section" wx:if="{{hotBooks.length > 0}}">
     <view class="section-head">
-      <text class="section-title">Popular books</text>
-      <text class="section-more" bindtap="goBooks">View all ></text>
+      <text class="section-title">{{i18n.popularBooks}}</text>
+      <text class="section-more" bindtap="goBooks">{{i18n.viewAll}}</text>
     </view>
     <scroll-view scroll-x class="book-scroll" enhanced show-scrollbar="{{false}}">
       <view class="book-scroll-item" wx:for="{{hotBooks}}" wx:key="id" bindtap="goDetail" data-id="{{item.id}}">
@@ -49,20 +52,20 @@
   <!-- My Books Section -->
   <view class="section my-books-section" wx:if="{{myBorrows.length > 0}}">
     <view class="section-head">
-      <text class="section-title">My books</text>
+      <text class="section-title">{{i18n.myBooks}}</text>
     </view>
     <view class="my-book-card" wx:for="{{myBorrows}}" wx:key="id" bindtap="goDetail" data-id="{{item.book.id}}">
       <image class="my-book-cover" src="{{item.book.coverUrl || '/images/default-cover.png'}}" mode="aspectFill"></image>
       <view class="my-book-info">
         <text class="my-book-title">{{item.book.title}}</text>
         <text class="my-book-author">{{item.book.author}}</text>
-        <text class="my-book-due {{item.isOverdue ? 'overdue' : ''}}">Return until {{item.dueDateStr}}</text>
+        <text class="my-book-due {{item.isOverdue ? 'overdue' : ''}}">{{i18n.returnUntil}}{{item.dueDateStr}}</text>
       </view>
       <text class="my-book-dots">⋮</text>
     </view>
   </view>
 
   <view class="empty-text" wx:if="{{!loading && hotBooks.length === 0 && newArrivals.length === 0}}">
-    No books available yet
+    {{i18n.noBooks}}
   </view>
 </view>

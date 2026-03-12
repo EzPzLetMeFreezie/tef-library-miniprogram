@@ -16,7 +16,7 @@
       <view class="stock-bar-bg">
         <view class="stock-bar-fill {{book.availableCount > 0 ? '' : 'empty'}}" style="width: {{book.totalCount > 0 ? (book.availableCount / book.totalCount * 100) : 0}}%"></view>
       </view>
-      <text class="stock-text {{book.availableCount > 0 ? 'in-stock' : 'out-stock'}}">{{book.availableCount > 0 ? 'In Stock' : 'Unavailable'}}</text>
+      <text class="stock-text {{book.availableCount > 0 ? 'in-stock' : 'out-stock'}}">{{book.availableCount > 0 ? i18n.inStock : i18n.unavailable}}</text>
     </view>
   </view>
 
@@ -28,32 +28,32 @@
   <!-- Detail Cards -->
   <view class="info-cards">
     <view class="info-row" wx:if="{{book.publisher}}">
-      <text class="info-label">Publisher</text>
+      <text class="info-label">{{i18n.publisher}}</text>
       <text class="info-value">{{book.publisher}}</text>
     </view>
     <view class="info-row">
-      <text class="info-label">Category</text>
-      <text class="info-value">{{book.category ? book.category.name : 'Uncategorized'}}</text>
+      <text class="info-label">{{i18n.category}}</text>
+      <text class="info-value">{{book.category ? book.category.name : i18n.uncategorized}}</text>
     </view>
     <view class="info-row" wx:if="{{book.isbn}}">
       <text class="info-label">ISBN</text>
       <text class="info-value">{{book.isbn}}</text>
     </view>
     <view class="info-row" wx:if="{{book.location}}">
-      <text class="info-label">Location</text>
+      <text class="info-label">{{i18n.location}}</text>
       <text class="info-value">{{book.location}}</text>
     </view>
     <view class="info-row">
-      <text class="info-label">Stock</text>
+      <text class="info-label">{{i18n.stock}}</text>
       <text class="info-value">{{book.availableCount}} / {{book.totalCount}}</text>
     </view>
   </view>
 
   <!-- Borrow Button -->
   <view class="detail-footer" wx:if="{{book.availableCount > 0 && book.status === 'AVAILABLE'}}">
-    <button class="borrow-btn" bindtap="handleBorrow" loading="{{borrowing}}">Get the Book</button>
+    <button class="borrow-btn" bindtap="handleBorrow" loading="{{borrowing}}">{{i18n.getBook}}</button>
   </view>
   <view class="detail-footer" wx:elif="{{book.availableCount <= 0}}">
-    <button class="borrow-btn disabled" disabled>Currently Unavailable</button>
+    <button class="borrow-btn disabled" disabled>{{i18n.currentlyUnavailable}}</button>
   </view>
 </view>

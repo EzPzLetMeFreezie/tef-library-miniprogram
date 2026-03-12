@@ -1,6 +1,18 @@
 const { get } = require('../../utils/request');
-const { formatDate, getStatusText, getStatusClass } = require('../../utils/format');
+const { formatDate, getStatusClass } = require('../../utils/format');
+const { getTexts, t } = require('../../utils/i18n');
 const app = getApp();
+
+function getStatusTextI18n(status) {
+  const map = {
+    BORROWED: 'statusBorrowed',
+    RETURNED: 'statusReturned',
+    OVERDUE: 'statusOverdue',
+    AVAILABLE: 'statusAvailable',
+    DISABLED: 'statusDisabled',
+  };
+  return t(map[status] || status);
+}
 
 Page({
   data: {
@@ -10,17 +22,18 @@ Page({
     page: 1,
     pageSize: 20,
     loading: false,
+    i18n: {},
   },
 
   onLoad() {
-    this.setData({ userInfo: app.globalData.userInfo });
+    this.setData({ userInfo: app.globalData.userInfo, i18n: getTexts() });
   },
 
   onShow() {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 2 });
     }
-    this.setData({ page: 1, records: [] });
+    this.setData({ page: 1, records: [], i18n: getTexts() });
     this.loadRecords();
   },
 
@@ -37,7 +50,7 @@ Page({
         borrowDateStr: formatDate(r.borrowDate),
         dueDateStr: formatDate(r.dueDate),
         returnDateStr: formatDate(r.returnDate),
-        statusText: getStatusText(r.status),
+        statusText: getStatusTextI18n(r.status),
         statusClass: getStatusClass(r.status),
       }));
       this.setData({ records });
@@ -64,9 +77,10 @@ Page({
   },
 
   handleLogout() {
+    const i18n = getTexts();
     wx.showModal({
-      title: '确认退出',
-      content: '确定要退出登录吗？',
+      title: i18n.logoutConfirmTitle,
+      content: i18n.logoutConfirmContent,
       success: (res) => {
         if (res.confirm) {
           app.logout();

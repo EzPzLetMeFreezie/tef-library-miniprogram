@@ -1,4 +1,5 @@
 const { get } = require('../../utils/request');
+const { getTexts } = require('../../utils/i18n');
 
 Page({
   data: {
@@ -11,9 +12,11 @@ Page({
     total: 0,
     hasMore: true,
     loading: false,
+    i18n: {},
   },
 
   onLoad() {
+    this.setData({ i18n: getTexts() });
     this.loadCategories();
     this.loadBooks();
   },
@@ -22,6 +25,7 @@ Page({
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 1 });
     }
+    this.setData({ i18n: getTexts() });
   },
 
   async loadCategories() {

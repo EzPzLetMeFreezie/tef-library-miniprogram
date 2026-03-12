@@ -8,6 +8,24 @@
   padding: 0 60rpx;
 }
 
+.login-lang-btn {
+  margin-top: 32rpx;
+  height: 52rpx;
+  padding: 0 32rpx;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 26rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-lang-text {
+  font-size: 24rpx;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1rpx;
+}
+
 .login-header {
   display: flex;
   flex-direction: column;

@@ -1,6 +1,7 @@
 const { get } = require('../../utils/request');
 const auth = require('../../utils/auth');
 const { formatDate } = require('../../utils/format');
+const { getLang, setLang, getTexts } = require('../../utils/i18n');
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -16,10 +17,12 @@ Page({
     dateDay: '',
     dateWeekday: '',
     dateMonth: '',
+    i18n: {},
   },
 
   onLoad() {
     this.setDateInfo();
+    this.setData({ i18n: getTexts() });
   },
 
   onShow() {
@@ -31,9 +34,30 @@ Page({
     this.setData({
       isAdmin: auth.isAdmin(),
       userInfo,
+      i18n: getTexts(),
     });
+    this.updateTabBarLang();
     this.loadData();
     this.loadMyBorrows();
+  },
+
+  updateTabBarLang() {
+    const i18n = getTexts();
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        'list[0].text': i18n.tabHome,
+        'list[1].text': i18n.tabSearch,
+        'list[2].text': i18n.tabLibrary,
+      });
+    }
+  },
+
+  toggleLang() {
+    const current = getLang();
+    const newLang = current === 'en' ? 'zh' : 'en';
+    setLang(newLang);
+    this.setData({ i18n: getTexts() });
+    this.updateTabBarLang();
   },
 
   setDateInfo() {

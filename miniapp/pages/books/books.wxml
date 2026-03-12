@@ -1,11 +1,11 @@
 <view class="books-container">
   <view class="search-section">
-    <input class="search-input" placeholder="搜索书名、作者..." value="{{keyword}}" bindinput="onKeywordInput" bindconfirm="doSearch" />
-    <button class="search-btn" size="mini" bindtap="doSearch">搜索</button>
+    <input class="search-input" placeholder="{{i18n.searchPlaceholder}}" value="{{keyword}}" bindinput="onKeywordInput" bindconfirm="doSearch" />
+    <button class="search-btn" size="mini" bindtap="doSearch">{{i18n.searchBtn}}</button>
   </view>
 
   <scroll-view scroll-x class="category-bar" wx:if="{{categories.length > 0}}">
-    <view class="category-item {{currentCategoryId === 0 ? 'active' : ''}}" bindtap="selectCategory" data-id="{{0}}">全部</view>
+    <view class="category-item {{currentCategoryId === 0 ? 'active' : ''}}" bindtap="selectCategory" data-id="{{0}}">{{i18n.allCategories}}</view>
     <view class="category-item {{currentCategoryId === item.id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="id" bindtap="selectCategory" data-id="{{item.id}}">{{item.name}}</view>
   </scroll-view>
 
@@ -13,7 +13,7 @@
     <book-card wx:for="{{books}}" wx:key="id" book="{{item}}" bindtap="goDetail" data-id="{{item.id}}"></book-card>
   </view>
 
-  <view class="loading-text" wx:if="{{loading}}">加载中...</view>
-  <view class="empty-text" wx:if="{{!loading && books.length === 0}}">暂无图书</view>
-  <view class="load-more" wx:if="{{hasMore && !loading}}" bindtap="loadMore">加载更多</view>
+  <view class="loading-text" wx:if="{{loading}}">{{i18n.loading}}</view>
+  <view class="empty-text" wx:if="{{!loading && books.length === 0}}">{{i18n.noResult}}</view>
+  <view class="load-more" wx:if="{{hasMore && !loading}}" bindtap="loadMore">{{i18n.loadMore}}</view>
 </view>
