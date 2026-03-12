@@ -5,19 +5,19 @@ export declare class UsersController {
     getMe(user: any): Promise<{
         id: number;
         name: string;
+        createdAt: Date;
         avatarUrl: string | null;
         phone: string | null;
         role: import("@prisma/client").$Enums.Role;
-        createdAt: Date;
     }>;
     findAll(page?: string, pageSize?: string, keyword?: string): Promise<{
         items: {
             id: number;
             name: string;
+            createdAt: Date;
             avatarUrl: string | null;
             phone: string | null;
             role: import("@prisma/client").$Enums.Role;
-            createdAt: Date;
         }[];
         total: number;
         page: number;
@@ -26,10 +26,10 @@ export declare class UsersController {
     updateRole(id: string, role: string): Promise<{
         id: number;
         name: string;
+        createdAt: Date;
         avatarUrl: string | null;
         phone: string | null;
         role: import("@prisma/client").$Enums.Role;
-        createdAt: Date;
     }>;
     deleteUser(id: string): Promise<{
         message: string;

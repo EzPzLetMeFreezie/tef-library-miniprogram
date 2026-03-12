@@ -1,40 +1,59 @@
 <view class="detail-container" wx:if="{{book}}">
-  <view class="detail-header">
-    <image class="detail-cover" src="{{book.coverUrl || '/images/default-cover.png'}}" mode="aspectFill"></image>
-    <view class="detail-info">
-      <text class="detail-title">{{book.title}}</text>
-      <text class="detail-author">{{book.author}}</text>
-      <text class="detail-publisher" wx:if="{{book.publisher}}">{{book.publisher}}</text>
-      <view class="detail-meta">
-        <text class="tag {{book.availableCount > 0 ? 'tag-available' : 'tag-overdue'}}">
-          {{book.availableCount > 0 ? '可借阅' : '已借完'}}
-        </text>
-        <text class="detail-stock">库存 {{book.availableCount}}/{{book.totalCount}}</text>
-      </view>
+  <!-- Cover Hero -->
+  <view class="cover-hero">
+    <view class="cover-stage">
+      <image class="detail-cover" src="{{book.coverUrl || '/images/default-cover.png'}}" mode="aspectFill"></image>
     </view>
   </view>
 
-  <view class="card detail-section">
-    <text class="section-label">分类</text>
-    <text class="section-value">{{book.category ? book.category.name : '未分类'}}</text>
+  <!-- Book Info - Centered -->
+  <view class="book-main-info">
+    <text class="detail-title">{{book.title}}</text>
+    <text class="detail-author">{{book.author}}</text>
+
+    <!-- Stock Progress Bar -->
+    <view class="stock-bar-wrap">
+      <view class="stock-bar-bg">
+        <view class="stock-bar-fill {{book.availableCount > 0 ? '' : 'empty'}}" style="width: {{book.totalCount > 0 ? (book.availableCount / book.totalCount * 100) : 0}}%"></view>
+      </view>
+      <text class="stock-text {{book.availableCount > 0 ? 'in-stock' : 'out-stock'}}">{{book.availableCount > 0 ? 'In Stock' : 'Unavailable'}}</text>
+    </view>
   </view>
 
-  <view class="card detail-section" wx:if="{{book.isbn}}">
-    <text class="section-label">ISBN</text>
-    <text class="section-value">{{book.isbn}}</text>
-  </view>
-
-  <view class="card detail-section" wx:if="{{book.location}}">
-    <text class="section-label">位置</text>
-    <text class="section-value">{{book.location}}</text>
-  </view>
-
-  <view class="card detail-desc" wx:if="{{book.description}}">
-    <text class="section-label">简介</text>
+  <!-- Description -->
+  <view class="desc-section" wx:if="{{book.description}}">
     <text class="desc-text">{{book.description}}</text>
   </view>
 
+  <!-- Detail Cards -->
+  <view class="info-cards">
+    <view class="info-row" wx:if="{{book.publisher}}">
+      <text class="info-label">Publisher</text>
+      <text class="info-value">{{book.publisher}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">Category</text>
+      <text class="info-value">{{book.category ? book.category.name : 'Uncategorized'}}</text>
+    </view>
+    <view class="info-row" wx:if="{{book.isbn}}">
+      <text class="info-label">ISBN</text>
+      <text class="info-value">{{book.isbn}}</text>
+    </view>
+    <view class="info-row" wx:if="{{book.location}}">
+      <text class="info-label">Location</text>
+      <text class="info-value">{{book.location}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">Stock</text>
+      <text class="info-value">{{book.availableCount}} / {{book.totalCount}}</text>
+    </view>
+  </view>
+
+  <!-- Borrow Button -->
   <view class="detail-footer" wx:if="{{book.availableCount > 0 && book.status === 'AVAILABLE'}}">
-    <button class="btn-primary borrow-btn" bindtap="handleBorrow" loading="{{borrowing}}">借阅此书</button>
+    <button class="borrow-btn" bindtap="handleBorrow" loading="{{borrowing}}">Get the Book</button>
+  </view>
+  <view class="detail-footer" wx:elif="{{book.availableCount <= 0}}">
+    <button class="borrow-btn disabled" disabled>Currently Unavailable</button>
   </view>
 </view>

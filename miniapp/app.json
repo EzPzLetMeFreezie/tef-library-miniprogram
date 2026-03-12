@@ -14,32 +14,32 @@
     "pages/admin-categories/admin-categories"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#4A90D9",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "TEF Library",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#999",
-    "selectedColor": "#4A90D9",
+    "selectedColor": "#1a1a1a",
     "backgroundColor": "#fff",
     "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/home/home",
-        "text": "首页",
+        "text": "Home",
         "iconPath": "images/home.png",
         "selectedIconPath": "images/home-active.png"
       },
       {
         "pagePath": "pages/books/books",
-        "text": "图书",
+        "text": "Search",
         "iconPath": "images/book.png",
         "selectedIconPath": "images/book-active.png"
       },
       {
         "pagePath": "pages/my-borrows/my-borrows",
-        "text": "我的",
+        "text": "Library",
         "iconPath": "images/user.png",
         "selectedIconPath": "images/user-active.png"
       }

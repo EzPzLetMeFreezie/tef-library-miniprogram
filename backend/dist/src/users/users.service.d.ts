@@ -5,10 +5,10 @@ export declare class UsersService {
     findById(id: number): Promise<{
         id: number;
         name: string;
+        createdAt: Date;
         avatarUrl: string | null;
         phone: string | null;
         role: import("@prisma/client").$Enums.Role;
-        createdAt: Date;
     }>;
     findAll(params: {
         page: number;
@@ -18,10 +18,10 @@ export declare class UsersService {
         items: {
             id: number;
             name: string;
+            createdAt: Date;
             avatarUrl: string | null;
             phone: string | null;
             role: import("@prisma/client").$Enums.Role;
-            createdAt: Date;
         }[];
         total: number;
         page: number;
@@ -30,10 +30,10 @@ export declare class UsersService {
     updateRole(id: number, role: string): Promise<{
         id: number;
         name: string;
+        createdAt: Date;
         avatarUrl: string | null;
         phone: string | null;
         role: import("@prisma/client").$Enums.Role;
-        createdAt: Date;
     }>;
     deleteUser(id: number): Promise<{
         message: string;

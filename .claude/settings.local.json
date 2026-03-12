@@ -23,7 +23,8 @@
       "Bash(curl -v http://127.0.0.1:3000/api/auth/profile)",
       "Bash(curl --noproxy '*' -s http://127.0.0.1:3000/api/auth/profile)",
       "Bash(npx prisma:*)",
-      "Bash(node fix-users.js)"
+      "Bash(node fix-users.js)",
+      "Bash(gh auth:*)"
     ]
   }
 }
