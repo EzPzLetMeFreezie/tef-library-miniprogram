@@ -21,7 +21,9 @@ Page({
   },
 
   onChooseAvatar(e) {
-    this.setData({ avatarUrl: e.detail.avatarUrl });
+    if (e.detail.avatarUrl) {
+      this.setData({ avatarUrl: e.detail.avatarUrl });
+    }
   },
 
   onNicknameInput(e) {
