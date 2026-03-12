@@ -1,6 +1,6 @@
 .my-borrows-container {
   padding: 24rpx;
-  padding-bottom: 40rpx;
+  padding-bottom: 140rpx;
 }
 
 .user-header {
@@ -37,36 +37,24 @@
 
 .filter-tabs {
   display: flex;
-  background: #fff;
-  border-radius: 12rpx;
+  gap: 16rpx;
   margin-bottom: 24rpx;
-  overflow: hidden;
+  flex-wrap: wrap;
 }
 
 .tab-item {
-  flex: 1;
-  text-align: center;
-  padding: 20rpx 0;
+  padding: 14rpx 32rpx;
   font-size: 26rpx;
   color: #666;
-  position: relative;
+  background: #f0f0f0;
+  border-radius: 32rpx;
+  font-weight: 500;
 }
 
 .tab-item.active {
-  color: #4A90D9;
+  background: #1a1a1a;
+  color: #fff;
   font-weight: 600;
-}
-
-.tab-item.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 48rpx;
-  height: 4rpx;
-  background: #4A90D9;
-  border-radius: 2rpx;
 }
 
 .record-card {

@@ -24,6 +24,9 @@ Page({
 
   onShow() {
     if (!auth.checkLogin()) return;
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({ selected: 0 });
+    }
     const userInfo = auth.getUserInfo();
     this.setData({
       isAdmin: auth.isAdmin(),
